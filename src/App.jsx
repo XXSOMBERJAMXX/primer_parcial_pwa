@@ -51,7 +51,7 @@ function App() {
       {/* Splash screen */}
       {cargando && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white grid items-center justify-center z-999">
-          <div className="text-6xl font-bold animate-pulse">TiendaCampus</div>
+          <img src="icon-512.png" alt="icono inicio" />
           <div className="spinner"></div>
           <p style={{ marginTop: '1rem', color: '#6B7280' }}>Cargando aplicación...</p>
         </div>
