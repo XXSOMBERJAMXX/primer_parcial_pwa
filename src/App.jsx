@@ -48,14 +48,6 @@ function App() {
 
   return (
     <>
-      {/* Splash screen */}
-      {cargando && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-white grid items-center justify-center z-999">
-          <img src="icon-512.png" alt="icono inicio" />
-          <div className="spinner"></div>
-          <p style={{ marginTop: '1rem', color: '#6B7280' }}>Cargando aplicación...</p>
-        </div>
-      )}
       {/* Menú de categorías - parte del shell pero con interactividad */}
       <nav className="bg-white shadow-md sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4">
