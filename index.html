@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4F46E5" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Tienda Campus</title>
+    
+    <!-- Estilos críticos del App Shell inline para carga inmediata -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(to bottom right, #EFF6FF, #E0E7FF);
+        min-height: 100vh;
+      }
+      
+      /* App Shell - Estructura visible inmediatamente */
+      #app-shell-header {
+        background-color: #4F46E5;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      .header-content {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      
+      .header-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+      
+      .header-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      
+      #app-shell-footer {
+        background-color: #1F2937;
+        color: white;
+        padding: 1.5rem 1rem;
+        margin-top: 3rem;
+      }
+      
+      .footer-content {
+        max-width: 56rem;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 0.875rem;
+      }
+      
+      #root {
+        min-height: 50vh;
+      }
+      
+      /* Indicador de carga inicial */
+      .initial-loader {
+        text-align: center;
+        padding: 3rem 1rem;
+      }
+      
+      .spinner {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        border: 4px solid #E0E7FF;
+        border-top-color: #4F46E5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- APP SHELL: Encabezado - Visible inmediatamente -->
+    <header id="app-shell-header">
+      <div class="header-content">
+        <svg class="header-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h1 class="header-title"> Campus</h1>
+      </div>
+    </header>
+
+    <!-- CONTENIDO DINÁMICO: Renderizado por React -->
+    <div id="root">
+      <!-- Loader inicial mientras carga React -->
+      <div class="initial-loader">
+        <div class="spinner"></div>
+        <p style="margin-top: 1rem; color: #6B7280;">Cargando aplicación...</p>
+      </div>
+    </div>
+
+    <!-- APP SHELL: Pie de página - Visible inmediatamente -->
+    <footer id="app-shell-footer">
+      <div class="footer-content">
+        <p>Universidad XYZ – Campus 2025</p>
+      </div>
+    </footer>
+
+    <!-- Script de React -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Registro del Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(reg => {
+              console.log('✅ Service Worker registrado correctamente');
+              console.log('📦 App Shell cacheado y listo para uso offline');
+            })
+            .catch(err => console.error('❌ Error al registrar Service Worker:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
